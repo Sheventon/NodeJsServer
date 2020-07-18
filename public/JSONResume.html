@@ -41,14 +41,11 @@
     function getResume() {
         getName();
         getDescription();
-        getHeading();
         getThemes();
-        getContacts();
         getPhone();
         getEmail();
         getDiscord();
         getTelegram();
-        getRequestButton();
     }
 
     function getName() {
@@ -80,19 +77,6 @@
         });
     }
 
-    function getHeading() {
-        $.getJSON("/JSONResume", function (response) {
-            let html = "<div class=\"container\" >";
-            html += "<div class=\"row\">";
-            html += "<div class=\"col-12\">";
-            html += "<h2>" + response.heading + "</h2>";
-            html += "</div>";
-            html += "</div>";
-            html += "</div>";
-            $("#heading").append(html);
-        });
-    }
-
     function getThemes() {
         $.getJSON("/JSONResume", function (response) {
             let html = "<div class=\"container\">";
@@ -108,25 +92,12 @@
         });
     }
 
-    function getContacts() {
-        $.getJSON("/JSONResume", function (response) {
-            let html = "<div class=\"container\">";
-            html += "<div class=\"row\">";
-            html += "<div class=\"col-12\">";
-            html += "<h2>" + response.contacts + "</h2>";
-            html += "</div>";
-            html += "</div>";
-            html += "</div>";
-            $("#contacts").append(html);
-        });
-    }
-
     function getPhone() {
         $.getJSON("/JSONResume", function (response) {
             let html = "<div class=\"container\" >";
             html += "<div class=\"row\">";
             html += "<div class=\"col-12\"> ";
-            html += "<p>" + response.phone + "</p>";
+            html += "<p>" + "Телефон: " + response.phone + "</p>";
             html += "</div>";
             html += "</div>";
             html += "</div>";
@@ -139,7 +110,7 @@
             let html = "<div class=\"container\">";
             html += "<div class=\"row\">";
             html += "<div class=\"col-12\">";
-            html += "<p>" + response.email + "</p>";
+            html += "<p>" + "Почта: " + "<a href=\"mailto: tores.fernando.real@gmail.com\">" + response.email + "</a>" + "</p>";
             html += "</div>";
             html += "</div>";
             html += "</div>";
@@ -152,7 +123,7 @@
             let html = "<div class=\"container\">";
             html += "<div class=\"row\">";
             html += "<div class=\"col-12\">";
-            html += "<p>" + response.discord + "</p>";
+            html += "<p>" + "Discord: " + response.discord + "</p>";
             html += "</div>";
             html += "</div>";
             html += "</div>";
@@ -165,24 +136,11 @@
             let html = "<div class=\"container\">";
             html += "<div class=\"row\">";
             html += "<div class=\"col-12\">";
-            html += "<p>" + response.telegram + "</p>";
+            html += "<p>" + "Телеграм: " + response.telegram + "</p>";
             html += "</div>";
             html += "</div>";
             html += "</div>";
             $("#telegram").append(html);
-        });
-    }
-
-    function getRequestButton() {
-        $.getJSON("/JSONResume", function (response) {
-            let html = "<div class=\"container\">";
-            html += "<div class=\"row\">";
-            html += "<div class=\"col-12\">";
-            html += response.request_button;
-            html += "</div>";
-            html += "</div>";
-            html += "</div>";
-            $("#req_button").append(html);
         });
     }
 </script>
@@ -193,13 +151,23 @@
 <div id="description">
 </div>
 
-<div id="heading">
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2>О чем со мной можно поговорить</h2>
+        </div>
+    </div>
 </div>
 
 <div id="themes">
 </div>
 
-<div id="contacts">
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2>Контакты для связи</h2>
+        </div>
+    </div>
 </div>
 
 <div id="phone">
@@ -214,7 +182,12 @@
 <div id="telegram">
 </div>
 
-<div id="req_button">
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <button type="submit" class="btn btn-light"><a href="Request.html">Оставить заявку</a></button>
+        </div>
+    </div>
 </div>
 
 </body>

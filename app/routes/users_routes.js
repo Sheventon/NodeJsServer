@@ -12,8 +12,6 @@ module.exports = function (app) {
 
             "image": "https://sun9-41.userapi.com/c830308/v830308701/d6f86/TnOcuhqyc8U.jpg",
 
-            "heading": "О чем со мной можно поговорить",
-
             "themes": [
                 "Математический анализ (шучу)",
                 "Фильмы Marvel",
@@ -23,17 +21,13 @@ module.exports = function (app) {
                 "История (слегка)"
             ],
 
-            "contacts": "Контакты для связи",
+            "phone": "+7 (937) 623-70-20",
 
-            "phone": "Телефон: +7 (937) 623-70-20",
+            "email": "tores.fernando.real@gmail.com",
 
-            "email": "Почта: <a href=\"mailto: tores.fernando.real@gmail.com\">tores.fernando.real@gmail.com</a>",
+            "discord": "_Shevanton_#7865",
 
-            "discord": "Discord: _Shevanton_#7865",
-
-            "telegram": "Телеграм: @Shevantonio",
-
-            "request_button": "<button type=\"submit\" class=\"btn btn-light\"><a href=\"request.html\">Оставить заявку</a></button>"
+            "telegram": "@Shevantonio",
         };
         response.send(JSON.stringify(result));
     });
