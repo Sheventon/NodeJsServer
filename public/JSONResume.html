@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
+            integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
+            crossorigin="anonymous"></script>
+    <title>JSONResume</title>
+    <style type="text/css">
+        img {
+            max-width: 65%;
+            max-height: 65%;
+        }
+
+        h1 {
+            font-size: 50px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        ul {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<script>
+    function getResume() {
+        getName();
+        getDescription();
+        getHeading();
+        getThemes();
+        getContacts();
+        getPhone();
+        getEmail();
+        getDiscord();
+        getTelegram();
+        getRequestButton();
+    }
+
+    function getName() {
+        $.getJSON("/JSONResume", function (response) {
+            let html = "<div class=\"container\" >";
+            html += "<div class=\"row\">";
+            html += "<div class=\"col-8\">";
+            html += "<h1>" + response.name + "</h1>";
+            html += "</div>";
+            html += "</div>";
+            html += "</div>";
+            $("#name").append(html);
+        });
+    }
+
+    function getDescription() {
+        $.getJSON("/JSONResume", function (response) {
+            let html = "<div class=\"container\" >";
+            html += "<div class=\"row\">";
+            html += "<div class=\"col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6\">";
+            html += "<p>" + response.description + "</p>";
+            html += "</div>";
+            html += "<div class=\"col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6\">";
+            html += "<img src=" + response.image + ">";
+            html += "</div>";
+            html += "</div>";
+            html += "</div>";
+            $("#description").append(html);
+        });
+    }
+
+    function getHeading() {
+        $.getJSON("/JSONResume", function (response) {
+            let html = "<div class=\"container\" >";
+            html += "<div class=\"row\">";
+            html += "<div class=\"col-12\">";
+            html += "<h2>" + response.heading + "</h2>";
+            html += "</div>";
+            html += "</div>";
+            html += "</div>";
+            $("#heading").append(html);
+        });
+    }
+
+    function getThemes() {
+        $.getJSON("/JSONResume", function (response) {
+            let html = "<div class=\"container\">";
+            html += "<div class=\"row\">";
+            html += "<ul>";
+            for (let i = 0; i < response.themes.length; i++) {
+                html += "<li>" + response.themes[i] + "</li>"
+            }
+            html += "</ul>";
+            html += "</div>";
+            html += "</div>";
+            $("#themes").append(html);
+        });
+    }
+
+    function getContacts() {
+        $.getJSON("/JSONResume", function (response) {
+            let html = "<div class=\"container\">";
+            html += "<div class=\"row\">";
+            html += "<div class=\"col-12\">";
+            html += "<h2>" + response.contacts + "</h2>";
+            html += "</div>";
+            html += "</div>";
+            html += "</div>";
+            $("#contacts").append(html);
+        });
+    }
+
+    function getPhone() {
+        $.getJSON("/JSONResume", function (response) {
+            let html = "<div class=\"container\" >";
+            html += "<div class=\"row\">";
+            html += "<div class=\"col-12\"> ";
+            html += "<p>" + response.phone + "</p>";
+            html += "</div>";
+            html += "</div>";
+            html += "</div>";
+            $("#phone").append(html);
+        });
+    }
+
+    function getEmail() {
+        $.getJSON("/JSONResume", function (response) {
+            let html = "<div class=\"container\">";
+            html += "<div class=\"row\">";
+            html += "<div class=\"col-12\">";
+            html += "<p>" + response.email + "</p>";
+            html += "</div>";
+            html += "</div>";
+            html += "</div>";
+            $("#email").append(html);
+        });
+    }
+
+    function getDiscord() {
+        $.getJSON("/JSONResume", function (response) {
+            let html = "<div class=\"container\">";
+            html += "<div class=\"row\">";
+            html += "<div class=\"col-12\">";
+            html += "<p>" + response.discord + "</p>";
+            html += "</div>";
+            html += "</div>";
+            html += "</div>";
+            $("#discord").append(html);
+        });
+    }
+
+    function getTelegram() {
+        $.getJSON("/JSONResume", function (response) {
+            let html = "<div class=\"container\">";
+            html += "<div class=\"row\">";
+            html += "<div class=\"col-12\">";
+            html += "<p>" + response.telegram + "</p>";
+            html += "</div>";
+            html += "</div>";
+            html += "</div>";
+            $("#telegram").append(html);
+        });
+    }
+
+    function getRequestButton() {
+        $.getJSON("/JSONResume", function (response) {
+            let html = "<div class=\"container\">";
+            html += "<div class=\"row\">";
+            html += "<div class=\"col-12\">";
+            html += response.request_button;
+            html += "</div>";
+            html += "</div>";
+            html += "</div>";
+            $("#req_button").append(html);
+        });
+    }
+</script>
+<body onload="getResume()">
+<div id="name">
+</div>
+
+<div id="description">
+</div>
+
+<div id="heading">
+</div>
+
+<div id="themes">
+</div>
+
+<div id="contacts">
+</div>
+
+<div id="phone">
+</div>
+
+<div id="email">
+</div>
+
+<div id="discord">
+</div>
+
+<div id="telegram">
+</div>
+
+<div id="req_button">
+</div>
+
+</body>
+</html>
