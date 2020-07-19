@@ -1,30 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Request</title>
-	<meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
-  		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Request</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-	<form>
-	  <div class="container" >
-    	<div class="row">
-    	  <div class="col-12">
-  			<div class="form-group">
-    		  <label for="exampleFullName">ФИО</label>
-    			<input id="exampleFullName" type="text" class="form-control" placeholder="ФИО">
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <form method="post" action="/request" onclick="sendRequest(this)">
+                    <label for="exampleFullName">ФИО</label>
+                    <input name="full_name" id="exampleFullName" type="text" class="form-control" placeholder="ФИО"
+                           maxlength="40">
 
-  			<div class="form-group">
-    		  <label for="exampleEmail">Электронная почта</label>
-    		  <input id="exampleEmail" type="text" class="form-control" placeholder="Электронная почта">
-  		    </div>
- 		      <button type="submit" class="btn btn-light"><a href="JSONResume.html">Оставить заявку</a></button>
- 		    </div>
-  		  </div>
-  		</div>
-	</form>
+                    <div class="form-group">
+                        <label for="exampleEmail">Электронная почта</label>
+                        <input name="email" id="exampleEmail" type="text" class="form-control"
+                               placeholder="Электронная почта"
+                               maxlength="60">
+                    </div>
+                    <input type="submit" value="Отправить заявку"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container requests">
+    <div class="row">
+        <div class="col-12">
+            <form method="post">
+                <div id="button req" class="btn btn-light"><a href="users.html">Показать заявки</a></div>
+            </form>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
+            integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
+            crossorigin="anonymous"></script>
+    <title>Users</title>
+</head>
+<script>
+    function getRequests() {
+        $.ajax({
+            url: "/users1", success: function (response) {
+                let html = "";
+                for (let i = 0; i < response.length; i++) {
+                    html += "<div class=\"container\">";
+                    html += "<div class=\"row\">";
+                    html += "<div class=\"col-12\">";
+                    html += "<p> FULL NAME: " + response[i].full_name + "</p>";
+                    html += "<p> EMAIL: " + response[i].email + "</p>";
+                    html += "<p>--------------------------------------------------------------------------------------------------</p>"
+                    html += "</div>";
+                    html += "</div>";
+                    html += "</div>";
+                    $("#requests").append(html);
+                    html = "";
+                }
+            }
+        });
+    }
+</script>
+<body onload="getRequests()">
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="article">Список запросов</h2>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div id="requests">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

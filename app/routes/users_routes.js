@@ -1,3 +1,6 @@
+bodyParser = require('body-parser').json();
+const fs = require("fs");
+
 module.exports = function (app) {
     app.get('/JSONResume', (request, response) => {
         var result = {
@@ -30,5 +33,21 @@ module.exports = function (app) {
             "telegram": "@Shevantonio",
         };
         response.send(JSON.stringify(result));
+    });
+
+    app.get('/users1', (request, response) => {
+        let arr = fs.readFileSync('app/data/requests.txt').toString().trim().split("\n");
+        for(let i = 0; i < arr.length; i++){
+            arr[i] = JSON.parse(arr[i]);
+        }
+        response.setHeader('Content-Type', 'application/json');
+        response.send(arr);
+    });
+
+    app.post('/request', bodyParser, (request, response) =>{
+        let user = request.body;
+        fs.appendFileSync('app\\data\\requests.txt', JSON.stringify({full_name: user.full_name, email: user.email}) + "\n");
+        response.setHeader('Content-Type', 'application/json');
+        response.send(JSON.stringify(user));
     });
 };
